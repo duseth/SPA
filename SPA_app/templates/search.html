@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+<div>
+    <a href="/">Вернуться к поиску</a>
+</div>
+<div>
+    <table>
+        <caption>Препараты</caption>
+        <tr>
+            <th></th>
+            <th>Название</th>
+            <th>Цена</th>
+        </tr>
+        {% for medicine in medicines %}
+            <tr>
+                <td><img src={{ medicine.photo }} width="100" height="100"></td>
+                <td><a href={{ medicine.url }}>{{ medicine.name }}</a></td>
+                <td>{{ medicine.price }} руб.</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

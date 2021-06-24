@@ -13,8 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path, include
+from django.urls import path
+from . import views
+
+app_name = "SPA_app"
 
 urlpatterns = [
-    path('', include("SPA_app.urls"))
+    path("", views.index, name="index"),
+    path("<str:query>", views.search, name="search")
 ]
