@@ -20,5 +20,7 @@ app_name = "SPA_app"
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("<str:query>", views.search, name="search")
+    path("search", views.search, name="search"),
+    path("contacts", views.contacts, name="contacts"),
+    path("pharmacies", views.pharmacies, name="pharmacies")
 ]
