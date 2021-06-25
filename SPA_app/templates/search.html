@@ -2,28 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Search</title>
+    <title>SPA</title>
 </head>
 <body>
 <div>
-    <a href="/">Вернуться к поиску</a>
+    <a href="/">Главная</a>
+</div>
+<div>
+    <form action="{% url 'SPA_app:search' %}" method="GET">
+        <div>
+            <input type="text" name="query" placeholder="Введите название препарата" value={{ query }}>
+            <input type="submit" value="Найти">
+
+        </div>
+        <div>
+            <select onchange="this.form.submit()" name="sort">
+                {% for option, value in sort_list %}
+                    {% if option == sort %}
+                        <option value={{ option }} selected>{{ value }}</option>
+                    {% else %}
+                        <option value={{ option }}>{{ value }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+    </form>
 </div>
 <div>
     <table>
-        <caption>Препараты</caption>
         <tr>
             <th></th>
             <th>Название</th>
             <th>Цена</th>
         </tr>
-        {% for medicine in medicines %}
-            <tr>
-                <td><img src={{ medicine.photo }} width="100" height="100"></td>
-                <td><a href={{ medicine.url }}>{{ medicine.name }}</a></td>
-                <td>{{ medicine.price }} руб.</td>
-            </tr>
+        {% for medicine in page %}
+        <tr>
+            <td><img src={{ medicine.photo }} width="150" height="100"></td>
+            <td><a href={{ medicine.url }}>{{ medicine.name }}</a></td>
+            <td>{{ medicine.price }} руб.</td>
+        </tr>
         {% endfor %}
     </table>
 </div>
+<div class="pagination">
+    <span class="step-links">
+        {% if page.has_previous %}
+            <a href="?query={{ query }}&sort={{ sort }}&page=1">&laquo; 1</a>
+            <a href="?query={{ query }}&sort={{ sort }}&page={{ page_obj.previous_page_number }}">Предыдущая</a>
+        {% endif %}
+
+        <span class="current">
+            {{ page.number }} of {{ page.paginator.num_pages }}
+        </span>
+
+        {% if page.has_next %}
+            <a href="?query={{ query }}&sort={{ sort }}&page={{ page.next_page_number }}">Следующая</a>
+            <a href="?query={{ query }}&sort={{ sort }}&page={{ page.paginator.num_pages }}">{{ page.paginator.num_pages }} &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 </body>
+{% include "footer.html" %}
 </html>
