@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>SPA</title>
 </head>
 <body>
-<form method="POST">
-    {% csrf_token %}
-    <input type="text" name="q" placeholder="Введите название препарата">
+<form action="{% url 'SPA_app:search' %}" method="GET">
+    <input type="text" name="query" placeholder="Введите название препарата">
     <input type="submit" value="Найти">
 </form>
 </body>
+
+{% include "footer.html" %}
 </html>
