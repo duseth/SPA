@@ -3,7 +3,7 @@ from django.db import models
 
 class Medicines(models.Model):
     name = models.CharField(max_length=255)
-    photo = models.URLField(max_length=255)
+    photo = models.URLField(max_length=255, null=True)
     price = models.IntegerField()
     url = models.URLField(max_length=255)
     pharmacy = models.CharField(max_length=255)
@@ -14,7 +14,7 @@ class Medicines(models.Model):
 
 class Products(models.Model):
     name = models.CharField(max_length=255)
-    photo = models.URLField(max_length=255)
+    photo = models.URLField(max_length=255, null=True)
 
     class Meta:
         db_table = "products"
