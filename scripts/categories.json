@@ -1,0 +1,241 @@
+{
+    "derma_cosmetics": [
+        "face",
+        "body",
+        "head",
+        "baby",
+        "essentialoil",
+        "cosmeticoil",
+        "nails",
+        "sunscreen",
+        "makiyazh"
+    ],
+    "basic_care": [
+        "face",
+        "body",
+        "head",
+        "baby",
+        "essentialoil",
+        "cosmeticoil",
+        "nails",
+        "sunscreen",
+        "makiyazh"
+    ],
+    "proficosmetics": [
+        "profiface",
+        "profibody",
+        "profihead",
+        "profibaby"
+    ],
+    "vitamin-mineral": [
+        "vitamins",
+        "vitamins_in_ampoules",
+        "womens_health",
+        "probiotics",
+        "mens_health",
+        "bad",
+        "sedative"
+    ],
+    "joint_diseases": [
+        "treatment_joint",
+        "hyalur",
+        "profilaktika_joint"
+    ],
+    "eye": [
+        "lens",
+        "ophthalmology",
+        "care_and_accessories",
+        "glasses"
+    ],
+    "baby-child": [
+        "baby_milk",
+        "babyfeeding",
+        "baby",
+        "baby_care",
+        "baby-bottles-teats",
+        "breastpumps",
+        "pacifier",
+        "pregnant_mothers",
+        "diaper",
+        "baby-appliances",
+        "toys",
+        "hygiene_products"
+    ],
+    "diabet": [
+        "test_strips",
+        "diabetes_drugs",
+        "insulin",
+        "glucometer",
+        "syringe_insulin",
+        "lancet",
+        "diabet_vitamin",
+        "diabet_cosmetics",
+        "diabetes_nutrition"
+    ],
+    "devices": [
+        "tonometers",
+        "physiotherapeutic",
+        "ingalyator",
+        "applicator",
+        "termometr",
+        "massagers",
+        "blood_analyzer",
+        "antifungal",
+        "stethoscopes",
+        "peakflowmeter",
+        "pulseoximeter",
+        "trainers_respiratory"
+    ],
+    "orvi": [
+        "antiviral_action",
+        "antiseptics",
+        "disinfectant",
+        "immunomodulator",
+        "poroshok",
+        "sirop_ot_kashlya",
+        "balm",
+        "medical_mask",
+        "kapli",
+        "teplo"
+    ],
+    "otolaryngology": [
+        "berushi",
+        "antiseptic",
+        "the_hygiene_and_care_of_the_ears",
+        "nose",
+        "losenge",
+        "breathing_relief"
+    ],
+    "gynecology": [
+        "pessaries",
+        "contraception",
+        "set_gynecological",
+        "sticks"
+    ],
+    "losing_weight": [
+        "clothes",
+        "obesity_treatment",
+        "weight_loss"
+    ],
+    "beauty": [
+        "manicurepedicure",
+        "perfume",
+        "device",
+        "massager_kosmetic"
+    ],
+    "fungus": [
+        "foot_fungus_treatment",
+        "foot_fungus_prevention"
+    ],
+    "bad_habits": [
+        "quit_smoking"
+    ],
+    "hygiene": [
+        "femininehygiene",
+        "shaving",
+        "personalhygiene",
+        "malehygiene",
+        "condom",
+        "intimate-hygiene"
+    ],
+    "skin_lesions": [
+        "wounds_burns_and_scars"
+    ],
+    "diet": [
+        "sugar_substitute",
+        "oil_food",
+        "kletchtka",
+        "karamel",
+        "kissel",
+        "marmelad",
+        "pitanie_spec",
+        "porridge",
+        "snack_bar",
+        "tea_coffee"
+    ],
+    "medical_products": [
+        "nanoplast",
+        "pillbox",
+        "motion_sickness",
+        "gloves",
+        "medical_clothes",
+        "syringe"
+    ],
+    "mobility": [
+        "stickwalking",
+        "homecraft_walking",
+        "walking_stick",
+        "armchair",
+        "toilet_seat",
+        "icedrift",
+        "nordic_walking_poles"
+    ],
+    "orthopedics": [
+        "elastich_bint",
+        "bandage",
+        "insoles",
+        "posture_corrector",
+        "compressionproducts"
+    ],
+    "anti-insects": [
+        "lice",
+        "insecticide",
+        "skin_parasites"
+    ],
+    "first_aid": [
+        "cooling_means",
+        "medicine_chest",
+        "other",
+        "antiseptic"
+    ],
+    "bandaging": [
+        "bint",
+        "cheesecloth",
+        "cotton_wool",
+        "adhesive_plaster"
+    ],
+    "rubber": [
+        "medical_squirt_bottle",
+        "hot_water_bottle"
+    ],
+    "sport": [
+        "protein",
+        "zameniteli-pitaniya",
+        "lkarnitin",
+        "sport_dobavka",
+        "energy",
+        "izotoniki",
+        "tapes"
+    ],
+    "tests": [
+        "pregnancy_test",
+        "drug_test",
+        "test_ect"
+    ],
+    "herbaltea": [
+        "tea",
+        "tea_child",
+        "herbal_balm"
+    ],
+    "nursing": [
+        "adults",
+        "cloth",
+        "mattress",
+        "urinal",
+        "bedcloth",
+        "shoe_covers",
+        "container",
+        "catheters",
+        "kosmetika_uhod_za_bolnimi"
+    ],
+    "mouth": [
+        "toothpaste",
+        "floss",
+        "toothbrush",
+        "gel",
+        "set",
+        "rinse",
+        "dentures",
+        "irrigator"
+    ]
+}
