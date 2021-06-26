@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Контакты</title>
-</head>
-<body>
+{% extends "base.html" %} 
+{% block title %} Контакты {% endblock %} 
+{% block content %}
 <div>
-    <a href="/">Главная</a>
+  <p>Наши контакты:</p>
 </div>
 <div>
-    <div>
-        <p>Наши контакты:</p>
-    </div>
-    <div>
-        <p>По вопросам рекламы: ads@site.com</p>
-        <p>По вопросам сотрудничества: hi@site.com</p>
-    </div>
+  <p>По вопросам рекламы: ads@site.com</p>
+  <p>По вопросам сотрудничества: hi@site.com</p>
 </div>
-</body>
-{% include "footer.html" %}
-</html>
+{% include "footer.html" %} 
+{% endblock %}
