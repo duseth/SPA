@@ -17,7 +17,7 @@ def search(request: HttpRequest) -> HttpResponse:
 
     if query != "":
         medicines = __get_medicines(query, sort)
-        page = __get_current_page(medicines, request.GET.get("page", default=0))
+        page = __get_current_page(medicines, request.GET.get("page", default=1))
 
         return render(
             request, "search.html",
@@ -47,7 +47,7 @@ def __get_medicines(query: str, sort: str) -> list:
 
     medicines = list()
     for medicine in all_medicines:
-        if query.lower() in medicine.name.lower():
+        if query.lower() in medicine.title.lower():
             medicines.append(medicine)
 
     return medicines
