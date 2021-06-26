@@ -1,30 +1,33 @@
 from django.db import models
 
 
-class Medicines(models.Model):
-    name = models.CharField(max_length=255)
-    photo = models.URLField(max_length=255, null=True)
-    price = models.IntegerField()
-    url = models.URLField(max_length=255)
-    pharmacy = models.CharField(max_length=255)
+class Medicine(models.Model):
+    title = models.CharField(max_length=255, verbose_name="title")
+    photo = models.URLField(max_length=255, null=True, verbose_name="photo")
+    price = models.IntegerField(verbose_name="price")
+    url = models.URLField(max_length=255, verbose_name="url")
+    pharmacy = models.CharField(max_length=255, verbose_name="pharmacy")
 
     class Meta:
-        db_table = "medicines"
+        verbose_name = "medicine"
+        db_table = "medicine"
 
 
-class Products(models.Model):
-    name = models.CharField(max_length=255)
-    photo = models.URLField(max_length=255, null=True)
-
-    class Meta:
-        db_table = "products"
-
-
-class Pharmacies(models.Model):
-    price = models.IntegerField()
-    url = models.URLField(max_length=255)
-    pharmacy = models.CharField(max_length=255)
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+class Product(models.Model):
+    title = models.CharField(max_length=255, verbose_name="title")
+    photo = models.URLField(max_length=255, null=True, verbose_name="photo")
 
     class Meta:
-        db_table = "pharmacies"
+        verbose_name = "product"
+        db_table = "product"
+
+
+class Pharmacy(models.Model):
+    price = models.IntegerField(verbose_name="price")
+    url = models.URLField(max_length=255, verbose_name="url")
+    pharmacy = models.CharField(max_length=255, verbose_name="pharmacy")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="product")
+
+    class Meta:
+        verbose_name = "pharmacy"
+        db_table = "pharmacy"

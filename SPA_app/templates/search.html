@@ -17,11 +17,11 @@
         </div>
         <div>
             <select onchange="this.form.submit()" name="sort">
-                {% for option, value in sort_list %}
+                {% for value, name in sort_list %}
                     {% if option == sort %}
-                        <option value={{ option }} selected>{{ value }}</option>
+                        <option value={{ value }} selected>{{ name }}</option>
                     {% else %}
-                        <option value={{ option }}>{{ value }}</option>
+                        <option value={{ value }}>{{ name }}</option>
                     {% endif %}
                 {% endfor %}
             </select>
