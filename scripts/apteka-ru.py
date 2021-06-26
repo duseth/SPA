@@ -51,7 +51,7 @@ def __products_processing(products: asyncio.Queue, response_text: str) -> bool:
 def __get_categories_queue() -> asyncio.Queue:
     categories_queue: asyncio.Queue = asyncio.Queue()
 
-    with open("categories.json", "r") as file:
+    with open("scripts/categories.json", "r") as file:
         categories: dict = json.load(file)
 
     for category, subcategories in categories.items():
