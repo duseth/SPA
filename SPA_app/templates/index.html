@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SPA</title>
-</head>
-<body>
-<form action="{% url 'SPA_app:search' %}" method="GET">
-    <input type="text" name="query" placeholder="Введите название препарата">
-    <input type="submit" value="Найти">
-</form>
-</body>
-
+{% extends "base.html" %}
+{% block title %}SPA{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-center">
+    <form action="{% url 'SPA_app:search' %}" method="GET">
+        <input type="text" name="query" class="form-control" placeholder="Введите название препарата">
+        <input type="submit" value="Найти">
+    </form>
+</div>
 {% include "footer.html" %}
-</html>
+{% endblock %}

@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SPA</title>
-</head>
-<body>
-<div>
-    <a href="/">Главная</a>
-</div>
+{% extends "base.html" %}
+{% block title %}SPA{% endblock %}
+{% block content %}
 <div>
     <form action="{% url 'SPA_app:search' %}" method="GET">
         <div>
-            <input type="text" name="query" placeholder="Введите название препарата" value={{ query }}>
+            <input type="text" name="query" class="form-control" placeholder="Введите название препарата" value={{ query }}>
             <input type="submit" value="Найти">
 
         </div>
@@ -61,6 +54,5 @@
         {% endif %}
     </span>
 </div>
-</body>
 {% include "footer.html" %}
-</html>
+{% endblock %}
