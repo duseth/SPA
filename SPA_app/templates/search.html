@@ -3,11 +3,9 @@
 {% block content %}
 <div>
     <form action="{% url 'SPA_app:search' %}" method="GET">
-        <div>
-            <input type="text" name="query" class="form-control" placeholder="Введите название препарата" value={{ query }}>
-            <input type="submit" value="Найти">
-
-        </div>
+        <div class='d-flex flex-row' id="input-container">
+            <input type="text" name="query" class="border-0 text-input"  placeholder="Введите название препарата">
+            <input type="submit" class="border-0 btn" id="search_btn" value> 
         <div>
             <select onchange="this.form.submit()" name="sort">
                 {% for option, value in sort_list %}
