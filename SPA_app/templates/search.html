@@ -11,7 +11,7 @@
     </form>
     <div>
         <div class="container justify-content-between" id="sort-container">
-            <div>Нашлось: {{ page|length }} </div>
+            <div>Нашлось: {{ all_medicines|length }} </div>
             <div id="select-container">
                 <div>Сортировка: </div>
                 <select onchange="this.form.submit()" name="sort">
@@ -37,8 +37,7 @@
                     <div class="product-info">
                         <p>{{ medicine.name }}</p>
                         <p>{{ medicine.price }} руб.</p>
-                </div>
-                
+                    </div>
             </div>
             
             <div class="float-end" id="arrow-container">
