@@ -12,20 +12,23 @@ def index(request: HttpRequest) -> HttpResponse:
 def search(request: HttpRequest) -> HttpResponse:
     query = request.GET.get("query")
     sort = request.GET.get("sort", default="name")
-    sort_list: dict = {
-        value: name
-        for value, name in
-        zip(["name", "byprice", "bypricedesc"], ["по алфавиту", "по возрастанию цены", "по убыванию цены"])
-    }
+
+    sort_names: dict = dict(name="по алфавиту", byprice="по возрастанию цены", bypricedesc="по убыванию цены")
 
     if query != "":
         medicines = __get_medicines(query, sort)
-        paginator = Paginator(medicines, 10)
+        page = __get_current_page(medicines, request.GET.get("page", default=1))
 
-        page_number = request.GET.get("page")
-        page = paginator.get_page(page_number)
+        return render(
+            request, "search.html",
+            {
+                "query": query,
+                "sort_list": sort_names.items(),
+                "sort": sort,
+                "page": page
+            }
+        )
 
-        return render(request, "search.html", {"query": query, "sort_list": sort_list.items(), "sort": sort, "page": page})
     return redirect("SPA_app:index")
 
 
@@ -38,13 +41,18 @@ def contacts(request: HttpRequest) -> HttpResponse:
 
 
 def __get_medicines(query: str, sort: str) -> list:
-    sort_key: dict = dict(name="name", byprice="price", bypricedesc="-price")
+    sort_keys: dict = dict(name="title", byprice="price", bypricedesc="-price")
 
-    all_medicines = Medicines.objects.order_by(sort_key.get(sort))
+    all_medicines = Medicine.objects.order_by(sort_keys.get(sort))
 
     medicines = list()
     for medicine in all_medicines:
-        if query.lower() in medicine.name.lower():
+        if query.lower() in medicine.title.lower():
             medicines.append(medicine)
 
     return medicines
+
+
+def __get_current_page(medicines: list, page_number: int) -> Paginator:
+    paginator = Paginator(medicines, 10)
+    return paginator.get_page(page_number)

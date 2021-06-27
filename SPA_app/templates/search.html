@@ -8,11 +8,11 @@
             <input type="submit" class="border-0 btn" id="search_btn" value> 
         <div>
             <select onchange="this.form.submit()" name="sort">
-                {% for option, value in sort_list %}
+                {% for value, name in sort_list %}
                     {% if option == sort %}
-                        <option value={{ option }} selected>{{ value }}</option>
+                        <option value={{ value }} selected>{{ name }}</option>
                     {% else %}
-                        <option value={{ option }}>{{ value }}</option>
+                        <option value={{ value }}>{{ name }}</option>
                     {% endif %}
                 {% endfor %}
             </select>
@@ -29,7 +29,7 @@
         {% for medicine in page %}
         <tr>
             <td><img src={{ medicine.photo }} width="150" height="100"></td>
-            <td><a href={{ medicine.url }}>{{ medicine.name }}</a></td>
+            <td><a href={{ medicine.url }}>{{ medicine.title }}</a></td>
             <td>{{ medicine.price }} руб.</td>
         </tr>
         {% endfor %}
