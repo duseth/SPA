@@ -1,13 +1,20 @@
 {% extends "base.html" %}
 {% block title %}SPA{% endblock %}
 {% block content %}
-<div>
+<div class="container">
+    <div>
     <form action="{% url 'SPA_app:search' %}" method="GET">
         <div class='d-flex flex-row' id="input-container">
             <input type="text" name="query" class="border-0 text-input"  placeholder="Введите название препарата">
-            <input type="submit" class="border-0 btn" id="search_btn" value> 
-        <div>
-            <select onchange="this.form.submit()" name="sort">
+            <input type="submit" class="border-0 btn" id="search_btn" value>
+        </div>          
+    </form>
+    <div>
+        <div class="container justify-content-between" id="sort-container">
+            <div>Нашлось: {{ page|length }} </div>
+            <div id="select-container">
+                <div>Сортировка: </div>
+                <select onchange="this.form.submit()" name="sort">
                 {% for option, value in sort_list %}
                     {% if option == sort %}
                         <option value={{ option }} selected>{{ value }}</option>
@@ -15,25 +22,33 @@
                         <option value={{ option }}>{{ value }}</option>
                     {% endif %}
                 {% endfor %}
-            </select>
+                </select>
+            </div>
         </div>
-    </form>
-</div>
-<div>
-    <table>
-        <tr>
-            <th></th>
-            <th>Название</th>
-            <th>Цена</th>
-        </tr>
+        
+    </div>
+    
+    </div>
+    <div class="container" id="results">
         {% for medicine in page %}
-        <tr>
-            <td><img src={{ medicine.photo }} width="150" height="100"></td>
-            <td><a href={{ medicine.url }}>{{ medicine.name }}</a></td>
-            <td>{{ medicine.price }} руб.</td>
-        </tr>
+        <div class='container' id="result-container">
+            <div id="medicine-info">
+                    <img src={{ medicine.photo }} width="150" height="100">
+                    <div class="product-info">
+                        <p>{{ medicine.name }}</p>
+                        <p>{{ medicine.price }} руб.</p>
+                </div>
+                
+            </div>
+            
+            <div class="float-end" id="arrow-container">
+                <a href="{{ medicine.url }}">
+                    <img src="https://www.svgrepo.com/show/80501/big-right-arrow.svg">
+                </a>
+            </div>  
+        </div>
         {% endfor %}
-    </table>
+    </div>
 </div>
 <div class="pagination">
     <span class="step-links">
@@ -52,5 +67,4 @@
         {% endif %}
     </span>
 </div>
-{% include "footer.html" %}
 {% endblock %}
