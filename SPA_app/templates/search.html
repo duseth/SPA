@@ -15,7 +15,7 @@
             <div id="select-container">
                 <div>Сортировка: </div>
                 <select onchange="this.form.submit()" name="sort">
-                {% for option, value in sort_list %}
+                {% for value, name in sort_list %}
                     {% if option == sort %}
                         <option value={{ value }} selected>{{ name }}</option>
                     {% else %}
