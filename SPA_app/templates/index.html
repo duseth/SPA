@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 {% block title %}SPA{% endblock %}
 {% block content %}
-<div class="d-flex justify-content-center">
-    <form action="{% url 'SPA_app:search' %}" method="GET">
-        <input type="text" name="query" class="form-control" placeholder="Введите название препарата">
-        <input type="submit" value="Найти">
-    </form>
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center" >
+    <div class="container">
+        <img src="../../static/img/main_logo.png" class="img-fluid">        
+            <form action="{% url 'SPA_app:search' %}"  method="GET">
+            <div class='d-flex flex-row' id="input-container">
+            <input type="text" name="query" class="border-0 text-input"  placeholder="Введите название препарата">
+            <input type="submit" class="border-0 btn" id="search_btn" value>
+            </div>        
+        </form>
+    </div>
 </div>
 {% include "footer.html" %}
 {% endblock %}

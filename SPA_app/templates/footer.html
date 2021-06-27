@@ -1,4 +1,10 @@
-<footer>
-  <a href="{% url 'SPA_app:pharmacies' %}">Поддерживаемые аптеки</a>
-  <a href="{% url 'SPA_app:contacts' %}">Обратная связь</a>
+<footer class="bg-light footer" >
+  <div class="d-flex flex-row justify-content-center align-items-center">
+      <div class="p-4">
+        <a href="{% url 'SPA_app:pharmacies' %}">Поддерживаемые аптеки</a>
+      </div>
+      <div class="p-4">
+        <a href="{% url 'SPA_app:contacts' %}">Обратная связь</a>
+      </div>
+  </div>
 </footer>
