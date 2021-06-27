@@ -59,10 +59,10 @@ def put_products_to_db():
     Medicines.objects.bulk_create(
         [
             Medicines(
-                name=product['name'],
-                photo=product['photo'],
-                price=product['price'],
-                url=product['url'],
+                title=product["name"],
+                photo=product["photo"],
+                price=product["price"],
+                url=product["url"],
                 pharmacy='rigla'
             )
             for product in products
