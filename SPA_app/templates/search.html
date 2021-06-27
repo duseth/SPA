@@ -49,19 +49,19 @@
         {% endfor %}
     </div>
 </div>
-<div class="pagination">
+<div class="pagination" style="margin-left: auto; margin-right: auto;">
     <span class="step-links">
         {% if page.has_previous %}
             <a href="?query={{ query }}&sort={{ sort }}&page=1">&laquo; 1</a>
-            <a href="?query={{ query }}&sort={{ sort }}&page={{ page_obj.previous_page_number }}">Предыдущая</a>
+            <a href="?query={{ query }}&sort={{ sort }}&page={{ page_obj.previous_page_number }}">← Предыдущая</a>
         {% endif %}
 
         <span class="current">
-            {{ page.number }} of {{ page.paginator.num_pages }}
+            {{ page.number }} из {{ page.paginator.num_pages }}
         </span>
 
         {% if page.has_next %}
-            <a href="?query={{ query }}&sort={{ sort }}&page={{ page.next_page_number }}">Следующая</a>
+            <a href="?query={{ query }}&sort={{ sort }}&page={{ page.next_page_number }}">Следующая →</a>
             <a href="?query={{ query }}&sort={{ sort }}&page={{ page.paginator.num_pages }}">{{ page.paginator.num_pages }} &raquo;</a>
         {% endif %}
     </span>
