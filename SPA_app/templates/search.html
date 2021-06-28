@@ -5,7 +5,7 @@
     <div>
     <form action="{% url 'SPA_app:search' %}" method="GET">
         <div class='d-flex flex-row' id="input-container">
-            <input type="text" name="query" class="border-0 text-input"  placeholder="Введите название препарата">
+            <input type="text" name="query" class="border-0 text-input"  placeholder="Введите название препарата" value={{ query }}>
             <input type="submit" class="border-0 btn" id="search_btn" value>
         </div>          
     </form>
@@ -41,7 +41,7 @@
             </div>
             
             <div class="float-end" id="arrow-container">
-                <a href="{{ medicine.url }}">
+                <a href="{{ medicine.url }}" target="_blank">
                     <img src="https://www.svgrepo.com/show/80501/big-right-arrow.svg">
                 </a>
             </div>  
