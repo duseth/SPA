@@ -1,16 +1,27 @@
-{% extends "base.html" %}
-{% block title %}SPA{% endblock %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="ru">
 {% load static %}
-<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <title>SPA</title>
+</head>
+<body>
+<div class="d-flex flex-column justify-content-center align-items-center vh-90">
     <div class="container">
-        <img src="{% static 'img/main_logo.png' %}" class="img-fluid" max-width="700px" max-height="700px">        
-            <form action="{% url 'SPA_app:search' %}"  method="GET">
-            <div class='d-flex flex-row' id="input-container">
-            <input type="text" name="query" class="border-0 text-input"  placeholder="Введите название препарата">
-            <input type="submit" class="border-0 btn" id="search_btn" value>
-            </div>        
+        <img src="{% static 'img/main_logo.png' %}" class="img-fluid mx-auto d-block"
+             style="width: 700px; height: 200px;">
+        <form action="{% url 'SPA_app:search' %}" method="GET">
+            <div class='d-flex flex-row w-75 mx-auto d-block' id="input-container">
+                <input type="text" name="query" class="border-0 text-input" placeholder="Введите название препарата">
+                <input type="submit" class="border-0 btn" id="search_btn" value>
+            </div>
         </form>
     </div>
 </div>
-{% endblock %}
+</body>
+{% include 'footer.html' %}
+</html>
