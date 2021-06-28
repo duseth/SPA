@@ -1,50 +1,63 @@
-{% extends "base.html" %}
-{% block title %}SPA{% endblock %}
-{% block content %}
-<div class="container">
-    <div>
-    <form action="{% url 'SPA_app:search' %}" method="GET">
-        <div class='d-flex flex-row' id="input-container">
-            <input type="text" name="query" class="border-0 text-input"  placeholder="Введите название препарата" value={{ query }}>
-            <input type="submit" class="border-0 btn" id="search_btn" value>
-        </div>          
-    </form>
-    <div>
-        <div class="container justify-content-between" id="sort-container">
-            <div>Нашлось: {{ all_medicines|length }} </div>
-            <div id="select-container">
-                <div>Сортировка: </div>
-                <select onchange="this.form.submit()" name="sort">
-                {% for value, name in sort_list %}
-                    {% if option == sort %}
-                        <option value={{ value }} selected>{{ name }}</option>
-                    {% else %}
-                        <option value={{ value }}>{{ name }}</option>
-                    {% endif %}
-                {% endfor %}
-                </select>
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <title>SPA</title>
+</head>
+<body>
+<header>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'SPA_app:index' %}">
+            <img src="{% static 'img/logo.png' %}" style="width: 170px; height: 90px;">
+        </a>
+    </div>
+    <div class="container">
+        <form action="{% url 'SPA_app:search' %}" method="GET">
+            <div class='d-flex flex-row' id="input-container">
+                <input type="text" name="query" class="border-0 text-input" placeholder="Введите название препарата"
+                       value={{ query }}>
+                <input type="submit" class="border-0 btn" id="search_btn" value>
             </div>
-        </div>
-        
+            <div class="container justify-content-between" id="sort-container">
+                <p>Нашлось: {{ all_medicines|length }}</p>
+                <div id="select-container">
+                    <div>Сортировка:</div>
+                    <select onchange="this.form.submit()" name="sort">
+                        {% for value, name in sort_list %}
+                        {% if option == sort %}
+                        <option value={{ value }} selected>{{ name }}</option>
+                        {% else %}
+                        <option value={{ value }}>{{ name }}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </form>
     </div>
-    
-    </div>
+</header>
+<div class="container">
     <div class="container" id="results">
         {% for medicine in page %}
         <div class='container' id="result-container">
             <div id="medicine-info">
-                    <img src={{ medicine.photo }} width="150" height="100">
-                    <div class="product-info">
-                        <p>{{ medicine.title }}</p>
-                        <p>{{ medicine.price }} руб.</p>
-                    </div>
+                <img src={{ medicine.photo }} width="150" height="100">
+                <div class="product-info">
+                    <p>{{ medicine.title }}</p>
+                    <p>{{ medicine.price }} руб.</p>
+                </div>
             </div>
-            
+
             <div class="float-end" id="arrow-container">
                 <a href="{{ medicine.url }}" target="_blank">
                     <img src="https://www.svgrepo.com/show/80501/big-right-arrow.svg">
                 </a>
-            </div>  
+            </div>
         </div>
         {% endfor %}
     </div>
@@ -66,6 +79,8 @@
             <strong><a href="?query={{ query }}&sort={{ sort }}&page={{ page.paginator.num_pages }}">{{ page.paginator.num_pages }} &raquo;</a></strong>
         {% endif %}
     </span>
+    </div>
 </div>
-</div>
-{% endblock %}
+</body>
+{% include 'footer.html' %}
+</html>
