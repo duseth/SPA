@@ -49,10 +49,11 @@
         {% endfor %}
     </div>
 </div>
-<div class="pagination" style="margin-left: auto; margin-right: auto;">
+<div class="container">
+    <div class="pagination" style="margin-left: auto; margin-right: auto;">
     <span class="step-links">
         {% if page.has_previous %}
-            <a href="?query={{ query }}&sort={{ sort }}&page=1">&laquo; 1</a>
+            <strong><a href="?query={{ query }}&sort={{ sort }}&page=1">&laquo; 1</a></strong>
             <a href="?query={{ query }}&sort={{ sort }}&page={{ page_obj.previous_page_number }}">← Предыдущая</a>
         {% endif %}
 
@@ -62,8 +63,9 @@
 
         {% if page.has_next %}
             <a href="?query={{ query }}&sort={{ sort }}&page={{ page.next_page_number }}">Следующая →</a>
-            <a href="?query={{ query }}&sort={{ sort }}&page={{ page.paginator.num_pages }}">{{ page.paginator.num_pages }} &raquo;</a>
+            <strong><a href="?query={{ query }}&sort={{ sort }}&page={{ page.paginator.num_pages }}">{{ page.paginator.num_pages }} &raquo;</a></strong>
         {% endif %}
     </span>
+</div>
 </div>
 {% endblock %}
