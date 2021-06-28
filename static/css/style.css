@@ -1,0 +1,161 @@
+a {
+    text-decoration: none;
+    color: gray;
+}
+
+.underline {
+    position: relative;
+}
+
+.underline::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0074D9;
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .underline:hover::before {
+        left: 0;
+        right: auto;
+        width: 100%;
+    }
+}
+
+.text-input {
+    padding: 10px;
+    width: 95%;
+    font: Helvetica, sans-serif;
+    font-weight: 500;
+    border-radius: 17px
+}
+
+*:focus {
+    outline: none;
+}
+
+select {
+    float: left;
+    border: solid 3px #00C2CE;
+    border-radius: 5px;
+    margin-left: 20px;
+    width: 150px;
+}
+
+.vh-90 {
+    height: 90vh;
+}
+
+.product-info {
+    margin-left: 20px;
+}
+
+#search_btn {
+    float: left;
+    border-radius: 17px;
+    background-image: url('https://www.svgrepo.com/show/16890/loupe.svg');
+    background-size: 100% 95%;
+    background-repeat: no-repeat;
+    width: 7%;
+}
+
+#search_btn:hover {
+    background-color: #6edde4;
+}
+
+#sort-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    font: Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+#input-container {
+    margin-top: 10px;
+    border: solid 3px #00C2CE;
+    border-radius: 20px;
+    background: #00C2CE;
+}
+
+#select-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#results {
+    padding: 40px;
+}
+
+#result-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding: 10px;
+    border: solid 3px #00C2CE;
+    border-radius: 20px;
+    background: #00C2CE;
+}
+
+#arrow-container {
+    display: flex;
+    min-height: inherit;
+}
+
+#arrow-container a {
+    padding: 20%;
+    width: inherit;
+    display: flex;
+    height: 100%;
+}
+
+#arrow-container a img {
+    display: block;
+    max-width: inherit;
+
+}
+
+#medicine-info {
+    display: flex;
+    flex-wrap: wrap;
+    background: #FFF;
+    border-radius: 20px;
+    width: 95%;
+    padding: 10px;
+    margin: -10px;
+}
+
+.pagination {
+    display: inline-flex;
+    justify-content: space-evenly;
+}
+
+.pagination a {
+    color: black;
+    padding: 8px 8px;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: #00C2CE;
+    border-radius: 20px;
+}
+
+.mapWrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+}
+
+.mapWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75%;
+    height: 75%;
+}
