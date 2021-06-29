@@ -46,7 +46,7 @@
         {% for medicine in page %}
         <div class='container' id="result-container">
             <div id="medicine-info">
-                <img src={{ medicine.photo }} width="150" height="100">
+                <img src={{ medicine.photo }} width="150" height="100" alt="{{ medicine.title }}">
                 <div class="product-info">
                     <p>{{ medicine.title }}</p>
                     <p>{{ medicine.price }} руб.</p>
