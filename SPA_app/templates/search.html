@@ -11,77 +11,82 @@
 </head>
 <body>
 <header>
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'SPA_app:index' %}">
-            <img src="{% static 'img/logo.png' %}" style="width: 170px; height: 90px;">
-        </a>
-    </div>
-    <div class="container">
-        <form action="{% url 'SPA_app:search' %}" method="GET">
-            <div class='d-flex flex-row' id="input-container">
-                <input type="text" name="query" class="border-0 text-input" placeholder="Введите название препарата"
-                       value={{ query }}>
-                <input type="submit" class="border-0 btn" id="search_btn" value>
-            </div>
-            <div class="container justify-content-between" id="sort-container">
-                <p>Нашлось: {{ all_medicines|length }}</p>
-                <div id="select-container">
-                    <div>Сортировка:</div>
-                    <select onchange="this.form.submit()" name="sort">
-                        {% for value, name in sort_list %}
-                        {% if option == sort %}
-                        <option value={{ value }} selected>{{ name }}</option>
-                        {% else %}
-                        <option value={{ value }}>{{ name }}</option>
-                        {% endif %}
-                        {% endfor %}
-                    </select>
-                </div>
-            </div>
-        </form>
-    </div>
-</header>
-<div class="container">
-    <div class="container" id="results">    
-        {% for medicine in page %}
-        <div class='container' id="result-container">
-            <div id="medicine-info">
-                <img src={{ medicine.photo }} width="150" height="100" alt="{{ medicine.title }}">
-                <div class="product-info">
-                    <p>{{ medicine.title }}</p>
-                    <p>{{ medicine.price }} руб.</p>
-                </div>
-            </div>
-
-            <div class="float-end" id="arrow-container">
-                <a href="{{ medicine.url }}" target="_blank">
-                    <img src="https://www.svgrepo.com/show/80501/big-right-arrow.svg">
+    <form action="{% url 'SPA_app:search' %}" method="GET">
+        <div class="d-flex justify-content-evenly">
+            <div class="col-1 logo-main">
+                <a class="navbar-brand" href="{% url 'SPA_app:index' %}">
+                    <img src="{% static 'img/logo.png' %}" width="170px" height="90px" alt="Logo">
                 </a>
             </div>
+            <div class='d-flex w-75 col-10 search-main' style="height: 75%;" id="input-container">
+                <input type="text" name="query" class="border-0 text-input"
+                       placeholder="Введите название препарата" value="{{ query }}">
+                <input type="submit" class="border-0 btn" id="search_btn" value>
+            </div>
         </div>
-        {% empty %}
-            <h2>Извините, по вашему запросу ничего не найдено :(</h2>
-        {% endfor %}
-    </div>
-</div>
-<div class="container d-flex justify-content-center align-items-center">
-    <div class="pagination" style="margin-left: auto; margin-right: auto;">
-    <span class="step-links">
-        {% if page.has_previous %}
-            <strong><a href="?query={{ query }}&sort={{ sort }}&page=1">&laquo; 1</a></strong>
-            <a href="?query={{ query }}&sort={{ sort }}&page={{ page_obj.previous_page_number }}">← Предыдущая</a>
-        {% endif %}
+        <hr class="search_line">
+        <div class="d-flex justify-content-evenly" id="sort-container">
+            <p class="search-label">Результатов: {{ all_medicines|length }}</p>
+            <div class="d-flex justify-content-evenly sort-main">
+                <p class="search-label">Сортировка:</p>
+                <select class="form-select" onchange="this.form.submit()" name="sort">
+                    {% for value, name in sort_list %}
+                        {% if value == sort %}
+                            <option value="{{ value }}" selected>{{ name }}</option>
+                        {% else %}
+                            <option value="{{ value }}">{{ name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </form>
+</header>
+<div class="container">
+    <div class="container" id="results">
+        {% if all_medicines|length == 0 %}
+            <h4 class="text-center">Увы, ничего не найдено</h4>
+        {% else %}
+            {% for medicine in page %}
+                <div class='container' id="result-container">
+                    <div id="medicine-info">
+                        <img class="contain" src="{{ medicine.photo }}" width="150" height="100"
+                             alt="{{ medicine.title }}">
+                        <div class="product-info">
+                            <p>{{ medicine.title|title }}</p>
+                            <p>от {{ medicine.price }} руб.</p>
+                        </div>
+                    </div>
 
-        <span class="current">
-            {{ page.number }} из {{ page.paginator.num_pages }}
-        </span>
+                    <div class="float-end" id="arrow-container">
+                        <a href="{{ medicine.url }}" target="_blank">
+                            <img src="{% static 'img/right-arrow.png' %}" alt="Arrow">
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            <div class="container d-flex justify-content-center align-items-center">
+                <div class="pagination" style="margin-left: auto; margin-right: auto;">
+                        <span class="step-links">
+                            {% if page.has_previous %}
+                                <strong><a href="?query={{ query }}&sort={{ sort }}&page=1">&laquo; 1</a></strong>
+                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page_obj.previous_page_number }}">← Предыдущая</a>
+                            {% endif %}
 
-        {% if page.has_next %}
-            <a href="?query={{ query }}&sort={{ sort }}&page={{ page.next_page_number }}">Следующая →</a>
-            <strong><a href="?query={{ query }}&sort={{ sort }}&page={{ page.paginator.num_pages }}">{{ page.paginator.num_pages }} &raquo;</a></strong>
+                            <span class="current">{{ page.number }} из {{ page.paginator.num_pages }}</span>
+
+                            {% if page.has_next %}
+                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page.next_page_number }}">Следующая →</a>
+                                <strong><a
+                                        href="?query={{ query }}&sort={{ sort }}&page={{ page.paginator.num_pages }}">
+                                    {{ page.paginator.num_pages }} &raquo;
+                                </a></strong>
+                            {% endif %}
+                        </span>
+                </div>
+            </div>
         {% endif %}
-    </span>
-    </div>
 </div>
 </body>
 {% include 'footer.html' %}
