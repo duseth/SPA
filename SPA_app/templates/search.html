@@ -43,6 +43,9 @@
 </header>
 <div class="container">
     <div class="container" id="results">
+        {% if all_medicine|length == 0 %}
+        <h2>Извините, по вашему запросу ничего не найдено :(</h2>
+        {% else %}
         {% for medicine in page %}
         <div class='container' id="result-container">
             <div id="medicine-info">
@@ -81,6 +84,7 @@
     </span>
     </div>
 </div>
+{% endif %}
 </body>
 {% include 'footer.html' %}
 </html>
