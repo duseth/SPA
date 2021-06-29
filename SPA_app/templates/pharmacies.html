@@ -1,20 +1,36 @@
-{% extends "base.html" %}
-{% block title %}Аптеки{% endblock %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="ru">
 {% load static %}
-<div class="d-flex flex-column min-vh-100 p-4 justify-content-center align-items-center">
-    <img src="{% static 'img/main_logo.png' %}" class="img-fluid" max-width="700px" max-height="700px">
-  <h4>Мы поддерживаем эти аптеки:</h4>
-  <div class="mapWrapper">
-      <iframe src="https://www.google.com/maps/d/embed?mid=1HRk8yCWz1CbEgGfVXYIVgo18hNhv0sCX" frameborder="0"></iframe>
-  </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <title>Аптеки</title>
+</head>
+<body>
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="justify-content-center align-items-center">
+        <a href="{% url 'SPA_app:index' %}">
+            <img src="{% static 'img/main_logo.png' %}" class="img-fluid" style="width: 700px; height: 200px;"
+                 alt="Logo">
+        </a>
+    </div>
+    <div class="container">
+        <h4 class="text-center">Мы поддерживаем эти аптеки:</h4>
+        <div class="mapWrapper">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1HRk8yCWz1CbEgGfVXYIVgo18hNhv0sCX"></iframe>
+        </div>
+    </div>
+    <div class="container">
+        <div class="d-flex justify-content-evenly flex-wrap">
+            <img src="{% static 'img/pharmacies/apteka-ru.png' %}" width="200px" height="100px">
+            <img src="{% static 'img/pharmacies/zdravcity.png' %}" width="200px" height="100px">
+            <img src="{% static 'img/pharmacies/rigla.jpg' %}" width="200px" height="100px">
+        </div>
+    </div>
 </div>
-<div class="container">
-  <div class="d-flex justify-content-evenly">
-  <img src="{% static 'img/apteka-ru.png' %}" width="200px" height="100px">
-  <img src="{% static 'img/zdravcity.png' %}" width="200px" height="100px">
-  <img src="{% static 'img/rigla.jpg' %}" width="200px" height="100px">
-</div>
-</div>
-
-{% endblock %}
+</body>
+{% include 'footer.html' %}
+</html>
