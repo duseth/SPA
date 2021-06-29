@@ -1,6 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:600');
+
+* {
+    font-family: Nunito, sans-serif;
+}
+
+p {
+    margin-bottom: 0;
+}
+
 a {
     text-decoration: none;
     color: gray;
+}
+
+h3 {
+    padding: 50px 30px 0 80px;
+}
+
+h4 {
+    margin-bottom: 20px;
+}
+
+.contain {
+    object-fit: contain;
+}
+
+.pharmacy {
+    padding: 0 30px 50px 80px;
 }
 
 .underline {
@@ -29,9 +55,26 @@ a {
 .text-input {
     padding: 10px;
     width: 95%;
-    font: Helvetica, sans-serif;
+    font-family: Nunito, sans-serif;
     font-weight: 500;
-    border-radius: 17px
+    border-radius: 17px;
+}
+
+.search-label {
+    padding-top: 10px;
+}
+
+.sort-main {
+    margin-left: 35%;
+}
+
+hr.search_line {
+    border-top: 3px solid #00C2CE;
+    width: 101%;
+}
+
+header {
+    width: 98vw;
 }
 
 *:focus {
@@ -52,13 +95,19 @@ select {
 
 .product-info {
     margin-left: 20px;
+    margin-top: 20px;
+}
+
+.logo-main {
+    margin-left: -60px;
 }
 
 #search_btn {
     float: left;
     border-radius: 17px;
-    background-image: url('https://www.svgrepo.com/show/16890/loupe.svg');
-    background-size: 100% 95%;
+    background-image: url('../img/loupe.png');
+    background-size: contain;
+    background-position: center center;
     background-repeat: no-repeat;
     width: 7%;
 }
@@ -70,25 +119,28 @@ select {
 #sort-container {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 30px;
-    font: Helvetica, sans-serif;
-    font-weight: 600;
+    margin-top: 10px;
+    margin-left: 10%;
+    padding-right: 2%;
 }
 
 #input-container {
-    margin-top: 10px;
+    margin: 20px 10px 10px -50px;
     border: solid 3px #00C2CE;
-    border-radius: 20px;
+    border-radius: 17px;
     background: #00C2CE;
 }
 
 #select-container {
     display: flex;
     flex-wrap: wrap;
+    float: right;
 }
 
 #results {
-    padding: 40px;
+    margin-bottom: 30px;
+    margin-left: 130px;
+    width: 1144px;
 }
 
 #result-container {
@@ -109,14 +161,13 @@ select {
 #arrow-container a {
     padding: 20%;
     width: inherit;
-    display: flex;
-    height: 100%;
+    height: 75%;
 }
 
 #arrow-container a img {
     display: block;
-    max-width: inherit;
-
+    margin-left: 15px;
+    padding-top: 15px;
 }
 
 #medicine-info {
@@ -138,23 +189,35 @@ select {
     color: black;
     padding: 8px 8px;
     text-decoration: none;
+    border-radius: 20px;
+    transition: box-shadow .7s ease-in-out;
+    line-height: 40px;
 }
 
 .pagination a:hover {
-    background-color: #00C2CE;
-    border-radius: 20px;
+    box-shadow: inset 0 -40px 0 -1px #00C2CE;
 }
 
 .mapWrapper {
     position: relative;
-    padding-bottom: 56.25%;
+    padding-bottom: 40%;
     padding-top: 25px;
     height: 0;
+    margin: auto;
+    width: 70%;
 }
 
 .mapWrapper iframe {
     position: absolute;
     top: 0;
-    width: 75%;
-    height: 75%;
+    width: 100%;
+    height: 100%;
+}
+
+img.grayscale {
+    -webkit-filter: grayscale(100%);
+}
+
+img.grayscale:hover {
+    -webkit-filter: grayscale(0%);
 }
