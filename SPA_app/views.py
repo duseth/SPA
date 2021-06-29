@@ -16,8 +16,8 @@ def search(request: HttpRequest) -> HttpResponse:
     sort_names: dict = dict(
         name="по алфавиту", byprice="по возрастанию цены", bypricedesc="по убыванию цены")
 
-    if query != "":
-        medicines = __get_medicines(query, sort)
+    if len(query) > 2:
+        medicines = get_medicines(query, sort)
         page = __get_current_page(
             medicines, request.GET.get("page", default=1))
 
@@ -43,7 +43,7 @@ def contacts(request: HttpRequest) -> HttpResponse:
     return render(request, "contacts.html")
 
 
-def __get_medicines(query: str, sort: str) -> list:
+def get_medicines(query: str, sort: str) -> list:
     sort_keys: dict = dict(name="title", byprice="price", bypricedesc="-price")
 
     all_medicines = Medicine.objects.order_by(sort_keys.get(sort))

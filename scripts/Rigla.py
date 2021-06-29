@@ -31,12 +31,12 @@ async def get_data(s, url):
         page_count = response.html.find(
             'div.catalog-toolbar-pages__item.catalog-toolbar-pages__item_last', first=True)
         for page in range(1, int(page_count.text) + 1):
-            await parse_data_from_page(s, f'{url}?p={page}', page)
+            await parse_data_from_page(s, f'{url}?p={page}')
     except Exception as e:
         print(e)
 
 
-async def parse_data_from_page(s, url, page):
+async def parse_data_from_page(s, url):
     response = await s.get(url)
     await response.html.arender(sleep=5)
     product_list = response.html.find('div.product')
@@ -61,7 +61,7 @@ def put_products_to_db():
             Medicines(
                 title=product["name"],
                 photo=product["photo"],
-                price=product["price"],
+                price=int(product["price"]),
                 url=product["url"],
                 pharmacy='rigla'
             )
