@@ -147,6 +147,8 @@ select {
 
 .mapWrapper {
     position: relative;
+    align-items: center;
+    justify-content: center;
     padding-bottom: 56.25%;
     padding-top: 25px;
     height: 0;
