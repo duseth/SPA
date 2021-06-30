@@ -57,7 +57,7 @@ h4 {
     width: 95%;
     font-family: Nunito, sans-serif;
     font-weight: 500;
-    border-radius: 17px;
+    border-radius: 14px;
 }
 
 .search-label {
@@ -109,7 +109,7 @@ select {
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
-    width: 7%;
+    width: 10%;
 }
 
 #search_btn:hover {
@@ -174,7 +174,7 @@ select {
     display: flex;
     flex-wrap: wrap;
     background: #FFF;
-    border-radius: 20px;
+    border-radius: 17px;
     width: 95%;
     padding: 10px;
     margin: -10px;
