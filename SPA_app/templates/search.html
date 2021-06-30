@@ -24,7 +24,7 @@
                 <input type="submit" class="border-0 btn" id="search_btn" value>
             </div>
         </div>
-        <div id="validation" style="text-align: center;>
+        <div id="validation" style="text-align: center;"></div>
         <hr class="search_line">
         <div class="d-flex justify-content-evenly" id="sort-container">
             <p class="search-label">Результатов: {{ all_medicines|length }}</p>
@@ -50,10 +50,10 @@
         {% else %}
             {% for medicine in page %}
                 <div class='container' id="result-container">
-                    <div id="medicine-info">
+                    <div id="medicine-info" style="flex-wrap: nowrap;">
                         <img class="contain" src="{{ medicine.photo }}" width="150" height="100"
                              alt="{{ medicine.title }}">
-                        <div class="product-info">
+                        <div class="product-info" styles="width: 70%;">
                             <p>{{ medicine.title|title }}</p>
                             <p>от {{ medicine.price }} руб.</p>
                         </div>
@@ -91,4 +91,14 @@
 </div>
 </body>
 {% include 'footer.html' %}
+ <script>
+    function check_input(){
+    if(document.querySelector('.text-input').value.length < 3){
+        document.querySelector('#validation').innerHTML = "В названии должно быть минимум 3 символа";
+    }
+    else{
+        document.querySelector('#validation').innerHTML = "";
+    }
+}
+</script>
 </html>
