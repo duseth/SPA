@@ -58,7 +58,8 @@ class Spider(scrapy.Spider):
         del img[:3]
         for product in zip(name, price, url, img):
             if price != '':
-                Medicine(title=product[0], photo=product[3], price=int(product[1]), url=product[2], pharmacy='zdravcity')
+                Medicine(title=product[0], photo=product[3], price=float(product[1].replace(" ", "")), url=product[2],
+                         pharmacy='zdravcity').save()
 
 
 def run():
@@ -68,5 +69,5 @@ def run():
             'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware': None
         },
     })
-    process.crawl(Spider1)
+    process.crawl(Spider)
     process.start()
