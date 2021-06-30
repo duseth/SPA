@@ -58,7 +58,9 @@ class Spider(scrapy.Spider):
         del img[:3]
         for product in zip(name, price, url, img):
             if price != '':
-                Medicine(title=product[0], photo=product[3], price=float(product[1]), url=product[2], pharmacy='zdravcity').save()
+                Medicine(title=product[0], photo=product[3], price=float(product[1].replace(" ", "")), url=product[2],
+                         pharmacy='zdravcity').save()
+
 
 
 def run():
