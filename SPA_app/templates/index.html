@@ -16,10 +16,11 @@
              style="width: 700px; height: 200px;">
         <form action="{% url 'SPA_app:search' %}" method="GET">
             <div class='d-flex flex-row w-75 mx-auto d-block' id="input-container">
-                <input type="text" name="query" class="border-0 text-input" placeholder="Введите название препарата">
+                <input type="text" onkeyup="check_input()" name="query" class="border-0 text-input" placeholder="Введите название препарата">
                 <input type="submit" class="border-0 btn" id="search_btn" value>
             </div>
         </form>
+        <div id="validation" style="text-align: center;"></div>
     </div>
 </div>
 </body>

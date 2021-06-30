@@ -3,7 +3,7 @@ import re
 import asyncio
 from requests_html import AsyncHTMLSession
 
-from SPA_app.models import Medicines
+from SPA_app.models import Medicine
 
 session = AsyncHTMLSession()
 main_url = 'https://ulyanovsk.rigla.ru'
@@ -54,11 +54,11 @@ async def parse_data_from_page(s, url):
 
 
 def put_products_to_db():
-    products = [all_products.get_nowait() for _ in all_products.qsize()]
+    products = [all_products.get_nowait() for _ in range(all_products.qsize())]
 
-    Medicines.objects.bulk_create(
+    Medicine.objects.bulk_create(
         [
-            Medicines(
+            Medicine(
                 title=product["name"],
                 photo=product["photo"],
                 price=int(product["price"]),
