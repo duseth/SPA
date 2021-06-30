@@ -26,4 +26,14 @@
 </div>
 </body>
 {% include 'footer.html' %}
+ <script>
+    function check_input(){
+    if(document.querySelector('.text-input').value.length < 3){
+        document.querySelector('#validation').innerHTML = "В названии должно быть минимум 3 символа";
+    }
+    else{
+        document.querySelector('#validation').innerHTML = "";
+    }
+}
+</script>
 </html>
