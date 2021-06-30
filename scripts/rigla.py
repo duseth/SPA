@@ -1,11 +1,8 @@
-from asyncio.tasks import sleep
-import re
-import asyncio
-from requests_html import AsyncHTMLSession
+from requests_html import HTMLSession
 
 from SPA_app.models import Medicine
 
-session = AsyncHTMLSession()
+session = HTMLSession()
 main_url = 'https://ulyanovsk.rigla.ru'
 urls = [
     'https://ulyanovsk.rigla.ru/cat/samoe-aktualnoe',
@@ -21,24 +18,24 @@ urls = [
     'https://ulyanovsk.rigla.ru/cat/optika-i-kontaktnaya-korrekciya'
 ]
 
-all_products = asyncio.Queue()
+all_products = []
 
 
-async def get_data(s, url):
+def get_data(s, url):
     try:
-        response = await s.get(url)
-        await response.html.arender(sleep=2)
+        response = s.get(url)
+        response.html.render(sleep=5, timeout=20)
         page_count = response.html.find(
             'div.catalog-toolbar-pages__item.catalog-toolbar-pages__item_last', first=True)
         for page in range(1, int(page_count.text) + 1):
-            await parse_data_from_page(s, f'{url}?p={page}')
+            parse_data_from_page(s, f'{url}?p={page}')
     except Exception as e:
         print(e)
 
 
-async def parse_data_from_page(s, url):
-    response = await s.get(url)
-    await response.html.arender(sleep=5)
+def parse_data_from_page(s, url):
+    response = s.get(url)
+    response.html.render(sleep=5, timeout=20)
     product_list = response.html.find('div.product')
     for i, product in enumerate(product_list):
         product_data = {}
@@ -50,11 +47,10 @@ async def parse_data_from_page(s, url):
         product_data['url'] = f'{main_url}{exact_link}'
         product_data['price'] = product.find(
             'span.product__active-price-number')[0].text
-        all_products.put_nowait(product_data)
+        all_products.append(product_data)
 
 
 def put_products_to_db():
-    products = [all_products.get_nowait() for _ in range(all_products.qsize())]
 
     Medicine.objects.bulk_create(
         [
@@ -65,16 +61,13 @@ def put_products_to_db():
                 url=product["url"],
                 pharmacy='rigla'
             )
-            for product in products
+            for product in all_products
         ]
     )
 
-
-async def main():
-    tasks = (get_data(session, url) for url in urls)
-    return await asyncio.gather(*tasks)
-
-
-def run():
-    session.run(main)
+def run(url):
+    get_data(session, url)
     put_products_to_db()
+
+for i in range(len(urls)):
+    run(urls[i])
