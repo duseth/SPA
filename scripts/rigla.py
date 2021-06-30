@@ -47,16 +47,18 @@ def parse_data_from_page(s, url):
         product_data['url'] = f'{main_url}{exact_link}'
         product_data['price'] = product.find(
             'span.product__active-price-number')[0].text
+        print(product_data)
         all_products.append(product_data)
 
 
 def put_products_to_db():
+    print("bulk create...")
     Medicine.objects.bulk_create(
         [
             Medicine(
                 title=product["name"],
                 photo=product["photo"],
-                price=int(product["price"]),
+                price=float(product["price"]),
                 url=product["url"],
                 pharmacy='rigla'
             )
@@ -66,6 +68,6 @@ def put_products_to_db():
 
 
 def run():
-    for i in range(len(urls)):
-        get_data(session, urls[i])
+    for url in urls:
+        get_data(session, url)
     put_products_to_db()
