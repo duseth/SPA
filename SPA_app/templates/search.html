@@ -59,7 +59,9 @@
                                 <p>от {{ medicine.price }} руб.</p>
                             </div>
                         </div>
-                        <img src="{% static 'img/pharmacies/' %}{{ medicine.pharmacy }}.jpg" style="object-fit: contain;">
+                        <div>
+                            <img src="{% static 'img/pharmacies/' %}{{ medicine.pharmacy }}.jpg" style="width: 15%;">
+                        </div>
                     </div>
 
                     <div class="float-end" id="arrow-container">
