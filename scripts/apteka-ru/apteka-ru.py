@@ -27,7 +27,7 @@ async def get_products(products: asyncio.Queue, categories: asyncio.Queue):
                                        params=params) as response:
                     products_is_over = __products_processing(products, await response.text())
 
-                    print(f"Page - {current_page:<3} | Category - {category:<5} | Total - {products.qsize():<6}")
+                    print(f"Page - {current_page:<3} | Category - {category:<30} | Total - {products.qsize():<6}")
                     current_page += 1
 
             categories.task_done()
@@ -104,7 +104,7 @@ def create_records(products):
             photo=product["photo"],
             price=product["price"],
             url=product["url"],
-            pharmacy="apteka.ru",
+            pharmacy="apteka-ru",
         )
         for product in products
     ])
