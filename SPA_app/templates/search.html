@@ -51,13 +51,15 @@
             {% for medicine in page %}
                 <div class='container' id="result-container">
                     <div id="medicine-info" style="flex-wrap: nowrap; justify-content: space-between;">
-                        <img class="contain" src="{{ medicine.photo }}" width="10%" height="100"
+                        <div class="d-flex">
+                            <img class="contain" src="{{ medicine.photo }}" width="10%" height="100"
                              alt="{{ medicine.title }}">
-                        <div class="product-info" style="word-break: break-word;">
-                            <p>{{ medicine.title|title }}</p>
-                            <p>от {{ medicine.price }} руб.</p>
+                            <div class="product-info" style="word-break: break-word;">
+                                <p>{{ medicine.title|title }}</p>
+                                <p>от {{ medicine.price }} руб.</p>
+                            </div>
                         </div>
-                        <img src="{% static 'img/pharmacies/' %}{{ medicine.pharmacy }}.jpg" style="width: 15%;">
+                        <img src="{% static 'img/pharmacies/' %}{{ medicine.pharmacy }}.jpg">
                     </div>
 
                     <div class="float-end" id="arrow-container">
