@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import meilisearch
 from pathlib import Path
 from django.core.management.utils import get_random_secret_key
 
@@ -29,6 +30,9 @@ DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS",
                           "127.0.0.1,localhost").split(",")
+
+# MeiliSearch API
+MEILISEARCH_CLIENT = meilisearch.Client(os.getenv("MEILISEARCH_URL"), os.getenv("MEILISEARCH_KEY"))
 
 # Application definition
 
