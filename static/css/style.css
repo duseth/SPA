@@ -58,7 +58,7 @@ h4 {
 
 .text-input {
     padding: 10px;
-    width: 95%;
+    width: 100%;
     font-family: Nunito, sans-serif;
     font-weight: 500;
     border-radius: 14px;
@@ -69,12 +69,14 @@ h4 {
 }
 
 .sort-main {
-    margin-left: 35%;
+    margin: auto;
+    margin-right: 0;
 }
 
 hr.search_line {
-    border-top: 3px solid #00C2CE;
-    width: 101%;
+    width: 221%;
+    margin-top: 10px;
+    color: #00C2CE;
 }
 
 header {
@@ -113,7 +115,9 @@ select {
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
-    width: 10%;
+    width: 60px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 #search_btn:hover {
@@ -124,8 +128,8 @@ select {
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
-    margin-left: 10%;
-    padding-right: 2%;
+    margin-left: 180px;
+    padding-right: 20%;
 }
 
 #input-container {
@@ -133,6 +137,7 @@ select {
     border: solid 3px #00C2CE;
     border-radius: 17px;
     background: #00C2CE;
+    height: 55px;
 }
 
 #select-container {
@@ -145,11 +150,12 @@ select {
     margin-bottom: 30px;
     margin-left: 130px;
     width: 1144px;
+    padding-right: 20%;
 }
 
 #result-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin-top: 10px;
     padding: 10px;
     border: solid 3px #00C2CE;
@@ -163,15 +169,12 @@ select {
 }
 
 #arrow-container a {
-    padding: 20%;
-    width: inherit;
-    height: 75%;
+    padding-left: 22%;
+    margin: auto;
 }
 
 #arrow-container a img {
     display: block;
-    margin-left: 15px;
-    padding-top: 15px;
 }
 
 #medicine-info {
@@ -179,7 +182,7 @@ select {
     flex-wrap: wrap;
     background: #FFF;
     border-radius: 17px;
-    width: 95%;
+    width: 98%;
     padding: 10px;
     margin: -10px;
 }
@@ -228,3 +231,12 @@ img.grayscale {
 img.grayscale:hover {
     -webkit-filter: grayscale(0%);
 }
+
+.res_cont {
+margin-left: 180px;
+    padding-left: 0px;
+}
+@media (max-width: 720px) {.res_cont {
+margin-left: 40px;
+    padding-left: 0px;
+} }
