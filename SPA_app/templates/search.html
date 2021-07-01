@@ -15,7 +15,7 @@
         <div class="d-flex flex-wrap">
             <div style="padding-right: 50px;">
                 <a class="navbar-brand" href="{% url 'SPA_app:index' %}">
-                    <img src="{% static 'img/logo.png' %}" width="170px" height="90px" alt="Logo">
+                    <img src="{% static 'img/logo.svg' %}" width="150px" height="75px" style="margin: 10px; margin-bottom: 0;" alt="Logo">
                 </a>
             </div>
             <div class='d-flex' style="width: 60%" id="input-container">
@@ -27,7 +27,7 @@
         <div id="validation" style="text-align: center;"></div>
         <hr class="search_line">
         <div class="container" id="sort-container">
-            <p class="search-label">Результатов: {{ all_medicines|length }}</p>
+            <p class="search-label">Результатов: {{ medicines_num }}</p>
             <div class="d-flex justify-content-evenly sort-main">
                 <p class="search-label">Сортировка:</p>
                 <select class="form-select" onchange="this.form.submit()" name="sort">
@@ -45,21 +45,21 @@
 </header>
 <div class="container res_cont">
     <div class="container" id="results" style="width: inherit; margin: 30px 0;">
-        {% if all_medicines|length == 0 %}
+        {% if medicines|length == 0 %}
             <h4 class="text-center">Увы, ничего не найдено</h4>
         {% else %}
-            {% for medicine in page %}
+            {% for medicine in medicines %}
                 <div class='container' id="result-container">
                     <div id="medicine-info" style="flex-wrap: nowrap;">
                         <div class="d-flex">
-                            <img class="contain" src="{{ medicine.photo }}" width="10%" height="100"
+                            <img class="contain" src="{{ medicine.photo }}" width="80" height="80"
                              alt="{{ medicine.title }}">
                             <div class="product-info" style="word-break: break-word;">
                                 <p>{{ medicine.title|title }}</p>
                                 <p>от {{ medicine.price }} руб.</p>
                             </div>
                         </div>
-                        <img src="{% static 'img/pharmacies/' %}{{ medicine.pharmacy }}.jpg" style="width: 150px;margin: auto;margin-right: 0px;">
+                        <img src="{% static 'img/pharmacies/' %}{{ medicine.pharmacy }}.jpg" style="width: 120px;margin: auto;margin-right: 0px;">
                     </div>
 
                     <div class="float-end" id="arrow-container">
@@ -73,18 +73,18 @@
             <div class="container d-flex justify-content-center align-items-center" style="padding-right: 20%;">
                 <div class="pagination" style="margin-left: auto; margin-right: auto;">
                         <span class="step-links">
-                            {% if page.has_previous %}
+                            {% if page != 1 %}
                                 <strong><a href="?query={{ query }}&sort={{ sort }}&page=1">&laquo; 1</a></strong>
-                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page_obj.previous_page_number }}">← Предыдущая</a>
+                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page|add:'-1' }}">← Предыдущая</a>
                             {% endif %}
 
-                            <span class="current">{{ page.number }} из {{ page.paginator.num_pages }}</span>
+                            <span class="current">{{ page }} из {{ num_pages }}</span>
 
-                            {% if page.has_next %}
-                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page.next_page_number }}">Следующая →</a>
+                            {% if page < num_pages %}
+                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page|add:'1' }}">Следующая →</a>
                                 <strong><a
-                                        href="?query={{ query }}&sort={{ sort }}&page={{ page.paginator.num_pages }}">
-                                    {{ page.paginator.num_pages }} &raquo;
+                                        href="?query={{ query }}&sort={{ sort }}&page={{ num_pages }}">
+                                    {{ num_pages }} &raquo;
                                 </a></strong>
                             {% endif %}
                         </span>
