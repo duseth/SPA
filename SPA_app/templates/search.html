@@ -13,12 +13,12 @@
 <header>
     <form action="{% url 'SPA_app:search' %}" method="GET">
         <div class="d-flex flex-wrap">
-            <div style="padding-right: 10px;">
+            <div style="padding-right: 50px;">
                 <a class="navbar-brand" href="{% url 'SPA_app:index' %}">
-                    <img src="{% static 'img/logo.png' %}" width="170px" height="90px" alt="Logo">
+                    <img src="{% static 'img/logo.svg' %}" width="150px" height="75px" style="margin: 10px; margin-bottom: 0;" alt="Logo">
                 </a>
             </div>
-            <div class='d-flex' style="width: 60%; margin-left: 5px;" id="input-container">
+            <div class='d-flex' style="width: 60%" id="input-container">
                 <input type="text" name="query" onkeyup="check_input()" class="border-0 text-input"
                        placeholder="Введите название препарата" value="{{ query }}">
                 <input type="submit" class="border-0 btn" id="search_btn" value>
@@ -26,9 +26,9 @@
         </div>
         <div id="validation" style="text-align: center;"></div>
         <hr class="search_line">
-        <div class="container justify-content-between" id="sort-container">
-            <p class="search-label" style="padding-left: 20px;">Результатов: {{ all_medicines|length }}</p>
-            <div class="d-flex justify-content-evenly sort-main" style="margin-left: 5px;">
+        <div class="container" id="sort-container">
+            <p class="search-label">Результатов: {{ medicines_num }}</p>
+            <div class="d-flex justify-content-evenly sort-main">
                 <p class="search-label">Сортировка:</p>
                 <select class="form-select" onchange="this.form.submit()" name="sort">
                     {% for value, name in sort_list %}
@@ -45,10 +45,10 @@
 </header>
 <div class="container res_cont">
     <div class="container" id="results" style="width: inherit; margin: 30px 0;">
-        {% if all_medicines|length == 0 %}
+        {% if medicines|length == 0 %}
             <h4 class="text-center">Увы, ничего не найдено</h4>
         {% else %}
-            {% for medicine in page %}
+            {% for medicine in medicines %}
                 <div class='container' id="result-container">
                     <div id="medicine-info">
                         <div class="d-flex">
@@ -73,18 +73,18 @@
             <div class="container d-flex justify-content-center align-items-center" style="padding-right: 20%;">
                 <div class="pagination" style="margin-left: auto; margin-right: auto;">
                         <span class="step-links">
-                            {% if page.has_previous %}
+                            {% if page != 1 %}
                                 <strong><a href="?query={{ query }}&sort={{ sort }}&page=1">&laquo; 1</a></strong>
-                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page_obj.previous_page_number }}">← Предыдущая</a>
+                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page|add:'-1' }}">← Предыдущая</a>
                             {% endif %}
 
-                            <span class="current">{{ page.number }} из {{ page.paginator.num_pages }}</span>
+                            <span class="current">{{ page }} из {{ num_pages }}</span>
 
-                            {% if page.has_next %}
-                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page.next_page_number }}">Следующая →</a>
+                            {% if page < num_pages %}
+                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page|add:'1' }}">Следующая →</a>
                                 <strong><a
-                                        href="?query={{ query }}&sort={{ sort }}&page={{ page.paginator.num_pages }}">
-                                    {{ page.paginator.num_pages }} &raquo;
+                                        href="?query={{ query }}&sort={{ sort }}&page={{ num_pages }}">
+                                    {{ num_pages }} &raquo;
                                 </a></strong>
                             {% endif %}
                         </span>
