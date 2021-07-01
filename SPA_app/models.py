@@ -4,7 +4,7 @@ from django.db import models
 class Medicine(models.Model):
     title = models.CharField(max_length=255, verbose_name="title")
     photo = models.URLField(max_length=255, null=True, verbose_name="photo")
-    price = models.IntegerField(verbose_name="price")
+    price = models.FloatField(verbose_name="price")
     url = models.URLField(max_length=255, verbose_name="url")
     pharmacy = models.CharField(max_length=255, verbose_name="pharmacy")
 
@@ -23,7 +23,7 @@ class Product(models.Model):
 
 
 class Pharmacy(models.Model):
-    price = models.IntegerField(verbose_name="price")
+    price = models.FloatField(verbose_name="price")
     url = models.URLField(max_length=255, verbose_name="url")
     pharmacy = models.CharField(max_length=255, verbose_name="pharmacy")
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="product")

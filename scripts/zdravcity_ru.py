@@ -58,14 +58,17 @@ class Spider(scrapy.Spider):
         del img[:3]
         for product in zip(name, price, url, img):
             if price != '':
-                Medicine(title=product[0], photo=product[3], price=int(product[1]), url=product[2], pharmacy='zdravcity')
+                Medicine(title=product[0], photo=product[3], price=float(product[1].replace(" ", "")), url=product[2],
+                         pharmacy='zdravcity').save()
 
 
-process = CrawlerProcess(settings={
-    "USER_AGENT": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0",
-    "DOWNLOADER_MIDDLEWARES": {
-        'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware': None
-    },
-})
-process.crawl(Spider)
-process.start()
+
+def run():
+    process = CrawlerProcess(settings={
+        "USER_AGENT": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0",
+        "DOWNLOADER_MIDDLEWARES": {
+            'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware': None
+        },
+    })
+    process.crawl(Spider)
+    process.start()

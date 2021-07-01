@@ -13,13 +13,11 @@ def search(request: HttpRequest) -> HttpResponse:
     query = request.GET.get("query")
     sort = request.GET.get("sort", default="name")
 
-    sort_names: dict = dict(
-        name="по алфавиту", byprice="по возрастанию цены", bypricedesc="по убыванию цены")
+    sort_names: dict = dict(name="по алфавиту", byprice="по возрастанию цены", bypricedesc="по убыванию цены")
 
     if len(query) > 2:
         medicines = get_medicines(query, sort)
-        page = __get_current_page(
-            medicines, request.GET.get("page", default=1))
+        page = __get_current_page(medicines, request.GET.get("page", default=1))
 
         return render(
             request, "search.html",
