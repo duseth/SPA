@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:600');
+
+* {
+    font-family: Nunito, sans-serif;
+}
+
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+a {
+    text-decoration: none;
+    color: gray;
+}
+
+h3 {
+    padding: 50px 30px 0 80px;
+}
+
+h4 {
+    margin-bottom: 20px;
+}
+
+.contain {
+    object-fit: contain;
+}
+
+.pharmacy {
+    padding: 0 30px 50px 80px;
+}
+
+.underline {
+    position: relative;
+}
+
+.underline::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0074D9;
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .underline:hover::before {
+        left: 0;
+        right: auto;
+        width: 100%;
+    }
+}
+
+.text-input {
+    padding: 10px;
+    width: 100%;
+    font-family: Nunito, sans-serif;
+    font-weight: 500;
+    border-radius: 14px;
+}
+
+.search-label {
+    padding-top: 10px;
+}
+
+.sort-main {
+    margin: auto;
+    margin-right: 0;
+}
+
+hr.search_line {
+    width: 221%;
+    margin-top: 10px;
+    color: #00C2CE;
+}
+
+header {
+    width: 98vw;
+}
+
+*:focus {
+    outline: none;
+}
+
+select {
+    float: left;
+    border: solid 3px #00C2CE;
+    border-radius: 5px;
+    margin-left: 20px;
+    width: 150px;
+}
+
+.vh-90 {
+    height: 90vh;
+}
+
+.product-info {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.logo-main {
+    margin-left: -60px;
+}
+
+#search_btn {
+    float: left;
+    border-radius: 17px;
+    background-image: url('../img/loupe.png');
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 60px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#search_btn:hover {
+    background-color: #6edde4;
+}
+
+#sort-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-left: 180px;
+    padding-right: 20%;
+}
+
+#input-container {
+    margin: 20px 10px 10px -50px;
+    border: solid 3px #00C2CE;
+    border-radius: 17px;
+    background: #00C2CE;
+    height: 55px;
+}
+
+#select-container {
+    display: flex;
+    flex-wrap: wrap;
+    float: right;
+}
+
+#results {
+    margin-bottom: 30px;
+    margin-left: 130px;
+    width: 1144px;
+    padding-right: 20%;
+}
+
+#result-container {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+    padding: 10px;
+    border: solid 3px #00C2CE;
+    border-radius: 20px;
+    background: #00C2CE;
+}
+
+#arrow-container {
+    display: flex;
+    min-height: inherit;
+}
+
+#arrow-container a {
+    padding-left: 22%;
+    margin: auto;
+}
+
+#arrow-container a img {
+    display: block;
+}
+
+#medicine-info {
+    display: flex;
+    flex-wrap: nowrap;
+    background: #FFF;
+    border-radius: 17px;
+    width: 98%;
+    padding: 10px;
+    margin: -10px;
+}
+
+.pagination {
+    display: inline-flex;
+    justify-content: space-evenly;
+}
+
+.pagination a {
+    color: black;
+    padding: 8px 8px;
+    text-decoration: none;
+    border-radius: 20px;
+    line-height: 40px;
+    background-image: linear-gradient(to top, #00C2CE 50%, transparent 50%);
+    background-size: 100% 200%;
+    background-position: top;
+    transition: background-position 0.5s ease-in-out;
+}
+
+.pagination a:hover {
+    background-position: bottom;
+}
+
+.mapWrapper {
+    position: relative;
+    padding-bottom: 40%;
+    padding-top: 25px;
+    height: 0;
+    margin: auto;
+    width: 70%;
+}
+
+.mapWrapper iframe {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+img.grayscale {
+    -webkit-filter: grayscale(100%);
+}
+
+img.grayscale:hover {
+    -webkit-filter: grayscale(0%);
+}
+
+.res_cont {
+margin-left: 180px;
+    padding-left: 0px;
+}
+@media (max-width: 720px) {.res_cont {
+margin-left: 40px;
+    padding-left: 0px;
+} }

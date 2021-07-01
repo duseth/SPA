@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru" style="box-sizing: border-box;">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <title>SPA</title>
+</head>
+<body>
+<header>
+    <form action="{% url 'SPA_app:search' %}" method="GET">
+        <div class="d-flex flex-wrap">
+            <div style="padding-right: 50px;">
+                <a class="navbar-brand" href="{% url 'SPA_app:index' %}">
+                    <img src="{% static 'img/logo.svg' %}" width="150px" height="75px" style="margin: 10px; margin-bottom: 0;" alt="Logo">
+                </a>
+            </div>
+            <div class='d-flex' style="width: 60%" id="input-container">
+                <input type="text" name="query" onkeyup="check_input()" class="border-0 text-input"
+                       placeholder="Введите название препарата" value="{{ query }}">
+                <input type="submit" class="border-0 btn" id="search_btn" value>
+            </div>
+        </div>
+        <div id="validation" style="text-align: center;"></div>
+        <hr class="search_line">
+        <div class="container" id="sort-container">
+            <p class="search-label">Результатов: {{ medicines_num }}</p>
+            <div class="d-flex justify-content-evenly sort-main">
+                <p class="search-label">Сортировка:</p>
+                <select class="form-select" onchange="this.form.submit()" name="sort">
+                    {% for value, name in sort_list %}
+                        {% if value == sort %}
+                            <option value="{{ value }}" selected>{{ name }}</option>
+                        {% else %}
+                            <option value="{{ value }}">{{ name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </form>
+</header>
+<div class="container res_cont">
+    <div class="container" id="results" style="width: inherit; margin: 30px 0;">
+        {% if medicines|length == 0 %}
+            <h4 class="text-center">Увы, ничего не найдено</h4>
+        {% else %}
+            {% for medicine in medicines %}
+                <div class='container' id="result-container">
+                    <div id="medicine-info">
+                        <div class="d-flex">
+                            <img class="contain" src="{{ medicine.photo }}" width="100vw" height="100"
+                             alt="{{ medicine.title }}">
+                            <div class="product-info" style="word-break: break-word;">
+                                <p>{{ medicine.title|title }}</p>
+                                <p>от {{ medicine.price }} руб.</p>
+                            </div>
+                        </div>
+                        <img src="{% static 'img/pharmacies/' %}{{ medicine.pharmacy }}.jpg" style="width: 150px;margin: auto 0 auto auto;">
+                    </div>
+
+                    <div class="float-end" id="arrow-container">
+                        <a href="{{ medicine.url }}" target="_blank">
+                            <img src="{% static 'img/right-arrow.png' %}" alt="Arrow">
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            <div class="container d-flex justify-content-center align-items-center" style="padding-right: 20%;">
+                <div class="pagination" style="margin-left: auto; margin-right: auto;">
+                        <span class="step-links">
+                            {% if page != 1 %}
+                                <strong><a href="?query={{ query }}&sort={{ sort }}&page=1">&laquo; 1</a></strong>
+                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page|add:'-1' }}">← Предыдущая</a>
+                            {% endif %}
+
+                            <span class="current">{{ page }} из {{ num_pages }}</span>
+
+                            {% if page < num_pages %}
+                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page|add:'1' }}">Следующая →</a>
+                                <strong><a
+                                        href="?query={{ query }}&sort={{ sort }}&page={{ num_pages }}">
+                                    {{ num_pages }} &raquo;
+                                </a></strong>
+                            {% endif %}
+                        </span>
+                </div>
+            </div>
+        {% endif %}
+</div>
+</body>
+{% include 'footer.html' %}
+ <script>
+    function check_input(){
+    if(document.querySelector('.text-input').value.length < 3){
+        document.querySelector('#validation').innerHTML = "В названии должно быть минимум 3 символа";
+    }
+    else{
+        document.querySelector('#validation').innerHTML = "";
+    }
+}
+</script>
+</html>
