@@ -13,12 +13,12 @@
 <header>
     <form action="{% url 'SPA_app:search' %}" method="GET">
         <div class="d-flex flex-wrap">
-            <div style="padding-right: 50px;">
+            <div style="padding-right: 30px;">
                 <a class="navbar-brand" href="{% url 'SPA_app:index' %}">
                     <img src="{% static 'img/logo.svg' %}" width="150px" height="75px" style="margin: 10px; margin-bottom: 0;" alt="Logo">
                 </a>
             </div>
-            <div class='d-flex' style="width: 60%" id="input-container">
+            <div class='d-flex' style="width: 60%" id="input-container" style="margin-left: 5px;">
                 <input type="text" name="query" onkeyup="check_input()" class="border-0 text-input"
                        placeholder="Введите название препарата" value="{{ query }}">
                 <input type="submit" class="border-0 btn" id="search_btn" value>
