@@ -96,7 +96,7 @@ def create_records(products: List[ItemModel]):
             photo=product.image_url,
             price=product.price,
             url=product.url,
-            pharmacy="planetazdorovo",
+            pharmacy="planeta_zdorovya",
         )
         for product in products
     ])
