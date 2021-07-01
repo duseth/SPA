@@ -59,7 +59,7 @@ def put_products_to_db():
                 photo=product["photo"],
                 price=float(product["price"]),
                 url=product["url"],
-                pharmacy='rigla'
+                pharmacy='budzdorov'
             )
             for product in all_products
         ]
