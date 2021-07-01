@@ -49,6 +49,7 @@ def get_medicines(query: str, sort: str) -> list:
     medicines = list()
     for medicine in all_medicines:
         if query.lower() in medicine.title.lower():
+            __change_pharmacy_name_for_logo_display(medicine)
             medicines.append(medicine)
 
     return medicines
@@ -57,3 +58,9 @@ def get_medicines(query: str, sort: str) -> list:
 def __get_current_page(medicines: list, page_number: int) -> Paginator:
     paginator = Paginator(medicines, 10)
     return paginator.get_page(page_number)
+
+def __change_pharmacy_name_for_logo_display(medicine: Medicine):
+    if medicine.pharmacy == "apteka.ru":
+        medicine.pharmacy = "apteka-ru"
+    if medicine.pharmacy == "planetazdorovo":
+        medicine.pharmacy = "planeta_zdorovya"

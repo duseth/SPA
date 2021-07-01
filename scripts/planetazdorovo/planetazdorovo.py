@@ -15,7 +15,7 @@ from .xpaths import *
 
 
 def parse_price(price_str: str) -> float:
-    return float(price_str.strip().split()[1])
+    return float(''.join(price_str.strip().split()[1:-1]))
 
 
 async def parse_search_page(

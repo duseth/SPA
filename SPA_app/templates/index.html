@@ -14,7 +14,6 @@
     <div class="container">
         <img src="{% static 'img/main_logo.png' %}" class="img-fluid mx-auto d-block"
              style="width: 700px; height: 200px;">
-        <h4 style="text-align: center; margin: 20px 0;">Мы работаем с аптеками г. Ульяновск</h4>
         <form action="{% url 'SPA_app:search' %}" method="GET">
             <div class='d-flex flex-row w-75 mx-auto d-block' id="input-container">
                 <input type="text" onkeyup="check_input()" name="query" class="border-0 text-input" placeholder="Введите название препарата">
