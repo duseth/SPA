@@ -1,14 +1,19 @@
 <footer class="footer">
-
-    <div class="d-flex flex-row justify-content-center align-items-center">
-        <h6 style="text-align: center; margin: 20px 0;">Мы работаем с аптеками г. Ульяновск</h6>
-        <div class="p-3 text-secondary">
-            <a class="underline" href="{% url 'SPA_app:pharmacies' %}">Поддерживаемые аптеки</a>
+<div class="container">
+    <div class="d-flex flex-row justify-content-between">
+        <div class="d-flex">
+            <h6 style="text-align: center; margin: 20px 0;">Мы работаем с аптеками г. Ульяновск</h6>
         </div>
-        <div class="p-3 text-secondary">
-            <a class="underline" href="{% url 'SPA_app:contacts' %}">Обратная связь</a>
+        <div class="d-flex">
+            <div class="p-3 text-secondary">
+                <a class="underline" href="/pharmacies">Поддерживаемые аптеки</a>
+            </div>
+            <div class="p-3 text-secondary">
+                <a class="underline" href="/contacts">Обратная связь</a>
+            </div>
         </div>
     </div>
+</div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
