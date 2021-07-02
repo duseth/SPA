@@ -128,6 +128,7 @@ select {
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
+    margin-left: 180px;
     padding-right: 20%;
 }
 
@@ -232,10 +233,13 @@ img.grayscale:hover {
 }
 
 .res_cont {
-margin-left: 180px;
+    margin-left: 180px;
     padding-left: 0px;
 }
-@media (max-width: 720px) {.res_cont {
-margin-left: 40px;
-    padding-left: 0px;
-} }
+
+@media (max-width: 720px) {
+    .res_cont {
+        margin-left: 40px;
+        padding-left: 0px;
+    }
+}
