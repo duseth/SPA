@@ -184,7 +184,7 @@ select {
 
 #medicine-info {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     background: #FFF;
     border-radius: 17px;
     width: 98%;
