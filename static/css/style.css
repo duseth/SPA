@@ -128,7 +128,6 @@ select {
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
-    margin-left: 180px;
     padding-right: 20%;
 }
 
@@ -179,7 +178,7 @@ select {
 
 #medicine-info {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     background: #FFF;
     border-radius: 17px;
     width: 98%;
