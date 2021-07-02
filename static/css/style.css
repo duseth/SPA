@@ -139,7 +139,7 @@ select {
 }
 
 #input-container {
-    margin: 20px 10px 10px -50px;
+    margin: 20px 10px 10px 5px;
     border: solid 3px #00C2CE;
     border-radius: 17px;
     background: #00C2CE;
