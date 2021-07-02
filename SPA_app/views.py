@@ -42,7 +42,10 @@ def contacts(request: HttpRequest) -> HttpResponse:
 def __get_medicines(query: str, sort: str, page_number: int) -> Page:
     sort_list: dict = dict(name="title", byprice="price", bypricedesc="price")
 
-    result: list = MEILISEARCH_CLIENT.index("medicines").search(query, {"limit": 100000})["hits"]
+    result: list = MEILISEARCH_CLIENT.index("medicines").search(query, {
+        "attributesToHighlight": ["title"],
+        "limit": 100000
+    })["hits"][:300]
     result.sort(key=lambda item: item[sort_list.get(sort)], reverse=sort == "bypricedesc")
 
     paginator: Paginator = Paginator(result, 10)
