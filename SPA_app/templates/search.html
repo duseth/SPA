@@ -27,7 +27,7 @@
         <div id="validation" style="text-align: center;"></div>
         <hr class="search_line">
         <div class="container" id="sort-container">
-            <p class="search-label">Результатов: {{ medicines_num }}</p>
+            <p class="search-label">Результатов: {{ medicines.paginator.count }}</p>
             <div class="d-flex justify-content-evenly sort-main">
                 <p class="search-label">Сортировка:</p>
                 <select class="form-select" onchange="this.form.submit()" name="sort">
@@ -73,18 +73,18 @@
             <div class="container d-flex justify-content-center align-items-center" style="padding-right: 20%;">
                 <div class="pagination" style="margin-left: auto; margin-right: auto;">
                         <span class="step-links">
-                            {% if page != 1 %}
+                            {% if medicines.has_previous %}
                                 <strong><a href="?query={{ query }}&sort={{ sort }}&page=1">&laquo; 1</a></strong>
-                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page|add:'-1' }}">← Предыдущая</a>
+                                <a href="?query={{ query }}&sort={{ sort }}&page={{ medicines.previous_page_number }}">← Предыдущая</a>
                             {% endif %}
 
-                            <span class="current">{{ page }} из {{ num_pages }}</span>
+                            <span class="current">{{ medicines.number }} из {{ medicines.paginator.num_pages }}</span>
 
-                            {% if page < num_pages %}
-                                <a href="?query={{ query }}&sort={{ sort }}&page={{ page|add:'1' }}">Следующая →</a>
+                            {% if medicines.has_next %}
+                                <a href="?query={{ query }}&sort={{ sort }}&page={{ medicines.next_page_number }}">Следующая →</a>
                                 <strong><a
-                                        href="?query={{ query }}&sort={{ sort }}&page={{ num_pages }}">
-                                    {{ num_pages }} &raquo;
+                                        href="?query={{ query }}&sort={{ sort }}&page={{ medicines.paginator.num_pages }}">
+                                    {{ medicines.paginator.num_pages }} &raquo;
                                 </a></strong>
                             {% endif %}
                         </span>
